@@ -13,10 +13,10 @@
 #include "../includes/push_swap.h"
 #include "../libft/includes/libft.h"
 
-void push_front_stack(t_stack **head_of_stack,t_stack **ptr_to_node)
+void push_front_node(t_node **head_of_stack,t_node **ptr_to_node)
 {
-	t_stack *stack;
-	t_stack *node;
+	t_node *stack;
+	t_node *node;
 
 	node = *ptr_to_node;
 	stack = *head_of_stack;
@@ -24,10 +24,10 @@ void push_front_stack(t_stack **head_of_stack,t_stack **ptr_to_node)
 	*head_of_stack = node;
 }
 
-void push_back_stack(t_stack **head_of_stack,t_stack **ptr_to_node)
+void push_back_stack(t_node **head_of_stack,t_node **ptr_to_node)
 {
-	t_stack *stack;
-	t_stack *node;
+	t_node *stack;
+	t_node *node;
 
 	node = *ptr_to_node;
 	stack = *head_of_stack;
@@ -37,11 +37,11 @@ void push_back_stack(t_stack **head_of_stack,t_stack **ptr_to_node)
 	node->next = NULL;
 }
 
-t_stack *extract_out_of_stack(t_stack **head_of_stack,int node_with_this_value)
+t_node *extract_out_of_stack(t_node **head_of_stack,int node_with_this_value)
 {
-	t_stack *stack;
-	t_stack *node_before_the_extracted;
-	t_stack *node_to_extract;
+	t_node *stack;
+	t_node *node_before_the_extracted;
+	t_node *node_to_extract;
 
 	node_to_extract = NULL;
 	stack = *head_of_stack;
@@ -63,17 +63,17 @@ t_stack *extract_out_of_stack(t_stack **head_of_stack,int node_with_this_value)
 }
 
 
-void initialise_stack_a(t_stack **head_of_a, char **int_array)
+void initialise_stack_a(t_node **head_of_a, char **int_array)
 {
-	t_stack *new_stack_node;
-	t_stack *head_of_stack;
+	t_node *new_stack_node;
+	t_node *head_of_stack;
 	int i;
 
 	i = -1;
 	head_of_stack = NULL;
 	while(int_array[++i] != '\0')
 	{
-		new_stack_node = malloc(sizeof(t_stack));
+		new_stack_node = malloc(sizeof(t_node));
 		new_stack_node->num = ft_atoi(int_array[i]);
 		new_stack_node->next = head_of_stack;
 		head_of_stack = new_stack_node;
@@ -82,11 +82,11 @@ void initialise_stack_a(t_stack **head_of_a, char **int_array)
 	*head_of_a = head_of_stack;
 }
 
-void reverse_stack_order(t_stack **head_of_stack)
+void reverse_stack_order(t_node **head_of_stack)
 {
-	t_stack *previous;
-	t_stack *current;
-	t_stack *next;
+	t_node *previous;
+	t_node *current;
+	t_node *next;
 
 	if (*head_of_stack == NULL)
 		return;

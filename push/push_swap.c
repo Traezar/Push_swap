@@ -13,7 +13,9 @@
 #include "../includes/push_swap.h"
 #include "../libft/includes/libft.h"
 
-t_array get_params(char **int_array)
+
+
+t_array *get_params(char **int_array)
 {
 	t_array *array;
 	char **ptr;
@@ -32,12 +34,12 @@ t_array get_params(char **int_array)
 
 void execute_push_swap (char ** int_array)
 {
-	t_stack *ranker;
+	t_node *ranker;
 	t_array *array;
 	int middle;
 
 	middle = 0;
-	*array = get_params(int_array);
+	array = get_params(int_array);
 	initialise_ranker(ranker,int_array);
 	sort(&ranker);
 	rank(&ranker);

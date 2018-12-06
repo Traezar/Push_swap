@@ -2,10 +2,10 @@
 #include "../includes/push_swap.h"
 #include "../libft/includes/libft.h"
 
-void front_back_split(t_stack **head_of_a, t_stack *front, t_stack *back)
+void front_back_split(t_node **head_of_a, t_node *front, t_node *back)
 {
-  t_stack *fast;
-  t_stack *slow;
+  t_node *fast;
+  t_node *slow;
 
   slow = *head_of_a;
   fast = (*head_of_a)->next;
@@ -24,15 +24,15 @@ void front_back_split(t_stack **head_of_a, t_stack *front, t_stack *back)
   slow->next = NULL;
 }
 
-t_stack *merge(t_stack *front, t_stack *back)
+t_node *merge(t_node *front, t_node *back)
 {
-  t_stack *result = NULL;
+  t_node *result = NULL;
 
   if (front == NULL)
     return(back);
   else if (back == NULL)
     return(front);
-  if (front->num <= back->num)
+  if (front->value <= back->value)
   {
     result = front;
     result->next = merge(front->next, back);
@@ -45,10 +45,10 @@ t_stack *merge(t_stack *front, t_stack *back)
   return(result);
 }
 
-void sort(t_stack **head_of_a)
+void sort(t_node **head_of_a)
 {
-  t_stack *front;
-  t_stack *back;
+  t_node *front;
+  t_node *back;
 
   front = NULL;
   back = NULL;
@@ -62,10 +62,10 @@ void sort(t_stack **head_of_a)
   *head_of_a = merge(front,back);
 }
 
-void rank (t_stack **head_of_stack)
+void rank (t_node **head_of_stack)
 {
-	t_stack *stack;
-  t_stack *ref;
+	t_node *stack;
+  t_node *ref;
   int i;
 
 	i = 0;

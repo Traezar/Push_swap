@@ -53,7 +53,7 @@ int get_smallest_value(t_array *array)
   return (array->smallest_value);
 }
 
-void assign_rank_to_stack_elements (t_stack *ranker, t_array **array)
+void assign_rank_to_stack_elements (t_node *ranker, t_array **array)
 {
   int i;
   t_array *ptr;
