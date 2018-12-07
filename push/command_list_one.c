@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command_list_one.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rsathiad <3kiraj@gmail.com>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/06 15:15:41 by rsathiad          #+#    #+#             */
+/*   Updated: 2018/12/06 15:15:43 by rsathiad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 #include "../libft/includes/libft.h"
 
@@ -6,13 +18,12 @@ void sa(t_node **head_of_a,  t_oplist **op)
   t_node *first;
   t_node *second;
 
-  (void)head_of_b;
   first = *head_of_a;
   second = (*head_of_a)->next;
   first = second->next;
   second->next = first;
   *head_of_a = second;
-  print_to_op("sa",op);
+  print_to_oplist("sa",op);
   return ;
 }
 
@@ -21,22 +32,19 @@ void sb(t_node **head_of_b, t_oplist **op)
   t_node *first;
   t_node *second;
 
-  (void)head_of_a;
   first = *head_of_b;
   second = (*head_of_b)->next;
   first = second->next;
   second->next = first;
-  *head_of_a = second;
-  print_to_op("sb",op);
+  *head_of_b = second;
+  print_to_oplist("sb",op);
   return ;
 }
 
-void ss(t_node **head_of_a, t_node **head_of_b, t_oplist **op)
+void ss(t_node **head_of_a, t_node **head_of_b, t_oplist **op_a , t_oplist **op_b)
 {
-  exec_sa(head_of_a, head_of_b);
-  exec_sb(head_of_a, head_of_b);
-  print_to_op("sa",op);
-  print_to_op("sb",op);
+  sa(head_of_a, op_a);
+  sb(head_of_b, op_b);
   return;
 }
 
@@ -52,7 +60,7 @@ void pa(t_node **head_of_a, t_node **head_of_b, t_oplist **op)
   *head_of_b = node_b->next;
   node_b->next = node_a;
   *head_of_a = node_b;
-  print_to_op("pa",op);
+  print_to_oplist("pa",op);
   return;
 
 }
@@ -69,7 +77,7 @@ void pb(t_node **head_of_a, t_node **head_of_b, t_oplist **op)
   *head_of_a = node_a->next;
   node_a->next = node_b;
   *head_of_b = node_a;
-  print_to_op("pb",op);
+  print_to_oplist("pb",op);
   return;
 
 }
@@ -77,50 +85,42 @@ void pb(t_node **head_of_a, t_node **head_of_b, t_oplist **op)
 void ra(t_node **head_of_a, t_oplist **op)
 {
   t_node *node_a;
-  t_node *node_b;
   t_node *ptr_to_node_being_moved;
 
   node_a = *head_of_a;
-  node_b = *head_of_b;
   ptr_to_node_being_moved = node_a;
   *head_of_a = node_a->next;
-  push_back_node(head_of_a , &ptr_to_node_being_moved, t_oplist **op);
-  print_to_op("ra",op);
+  push_back_node(head_of_a , &ptr_to_node_being_moved);
+  print_to_oplist("ra",op);
   return ;
 }
 
 void rb(t_node **head_of_b, t_oplist **op)
 {
-  t_node *node_a;
   t_node *node_b;
   t_node *ptr_to_node_being_moved;
 
-  node_a = *head_of_a;
   node_b = *head_of_b;
   ptr_to_node_being_moved = node_b;
   *head_of_b = node_b->next;
-  push_back_node(head_of_b , &ptr_to_node_being_moved, t_oplist **op);
-  print_to_op("rb",op);
+  push_back_node(head_of_b , &ptr_to_node_being_moved);
+  print_to_oplist("rb",op);
   return ;
 }
 
-void rr(t_node **head_of_a, t_node **head_of_b, t_oplist **op)
+void rr(t_node **head_of_a, t_node **head_of_b, t_oplist **op_a , t_oplist **op_b)
 {
-  ra(head_of_a, head_of_b);
-  rb(head_of_a, head_of_b);
-  print_to_op("ra",op);
-  print_to_op("rb",op);
+  ra(head_of_a, op_a);
+  rb(head_of_b, op_b);
   return ;
 }
 
 void rra(t_node **head_of_a, t_oplist **op)
 {
   t_node *node_a;
-  t_node *node_b;
   t_node *ptr_to_previous;
 
   node_a = *head_of_a;
-  node_b = *head_of_b;
   if(node_a == NULL)
     return ;
   if((node_a->next) == NULL)
@@ -132,17 +132,15 @@ void rra(t_node **head_of_a, t_oplist **op)
   }
   ptr_to_previous->next = NULL;
   push_front_node(head_of_a, &node_a);
-  print_to_op("rra",op);
+  print_to_oplist("rra",op);
   return;
 }
 
-void rrb(t_node **head_of_a, t_oplist **op)
+void rrb(t_node **head_of_b, t_oplist **op)
 {
-  t_node *node_a;
   t_node *node_b;
   t_node *ptr_to_previous;
 
-  node_a = *head_of_a;
   node_b = *head_of_b;
   if(node_b == NULL)
     return ;
@@ -155,22 +153,13 @@ void rrb(t_node **head_of_a, t_oplist **op)
   }
   ptr_to_previous->next = NULL;
   push_front_node(head_of_b ,&node_b);
-  print_to_op("rrb",op);
+  print_to_oplist("rrb",op);
   return;
 }
 
-void rrr(t_node **head_of_a, t_node **head_of_b, t_oplist **op)
+void rrr(t_node **head_of_a, t_node **head_of_b, t_oplist **op_a , t_oplist **op_b)
 {
-  rra(head_of_a, head_of_b);
-  rrb(head_of_a, head_of_b);
-  print_to_op("rra",op);
-  print_to_op("rrb",op);
+  rra(head_of_a, op_a);
+  rrb(head_of_b, op_b);
   return ;
-}
-
-void print_to_op(char *str, t_oplist **op)
-{
-  malloc new node;
-  assign str to it ;
-  pushback new node;
 }

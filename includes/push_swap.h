@@ -9,11 +9,10 @@
 /*   Updated: 2018/11/18 10:25:32 by rsathiad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 typedef struct s_array
 {
   int size;
-  int range;
-  int median;
   int largest_value;
   int smallest_value;
   struct s_node *stack;
@@ -36,9 +35,10 @@ typedef struct s_oplist
 } t_oplist;
 
 
-t_node *create_stack_array;
+t_node *create_stack_array (char **ptr,int size);
 int get_largest_value(t_array *array);
-int get_smallest_value(t_array *array);void sort_with_commands(t_array **array);
+int get_smallest_value(t_array *array);
+void sort_with_commands(t_array **array);
 void assign_rank_to_stack_elements (t_node *ranker, t_array **array);
 void sort_with_commands(t_array **array);
 
@@ -61,12 +61,14 @@ void sort(t_node **ranker);
 
 void sa(t_node **head_of_a, t_oplist **op);
 void sb( t_node **head_of_b, t_oplist **op);
-void ss(t_node **head_of_a, t_node **head_of_b, t_oplist **op);
+void ss(t_node **head_of_a, t_node **head_of_b, t_oplist **op_a , t_oplist **op_b);
 void pa(t_node **head_of_a, t_node **head_of_b, t_oplist **op);
 void pb(t_node **head_of_a, t_node **head_of_b, t_oplist **op);
 void ra(t_node **head_of_a, t_oplist **op);
 void rb(t_node **head_of_b, t_oplist **op);
-void rr(t_node **head_of_a, t_node **head_of_b, t_oplist **op);
+void rr(t_node **head_of_a, t_node **head_of_b, t_oplist **op_a , t_oplist **op_b);
 void rra(t_node **head_of_a, t_oplist **op);
 void rrb(t_node **head_of_b, t_oplist **op);
-void rrr(t_node **head_of_a, t_node **head_of_b, t_oplist **op);
+void rrr(t_node **head_of_a, t_node **head_of_b, t_oplist **op_a , t_oplist **op_b);
+
+void print_to_oplist(char *str, t_oplist **head);

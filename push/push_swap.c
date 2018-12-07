@@ -13,8 +13,6 @@
 #include "../includes/push_swap.h"
 #include "../libft/includes/libft.h"
 
-
-
 t_array *get_params(char **int_array)
 {
 	t_array *array;
@@ -23,6 +21,7 @@ t_array *get_params(char **int_array)
 
 	i = 0;
 	ptr = int_array;
+	array = malloc(sizeof(t_array));
 	while (ptr[i] != '\0')
 		i++;
 	array->size = ++i;
@@ -40,7 +39,7 @@ void execute_push_swap (char ** int_array)
 
 	middle = 0;
 	array = get_params(int_array);
-	initialise_ranker(ranker,int_array);
+	ranker = create_stack_array(int_array, array->size);
 	sort(&ranker);
 	rank(&ranker);
 	assign_rank_to_stack_elements(ranker, &array);
@@ -66,7 +65,7 @@ int main (int argc, char ** argv)
 				exit(0);
 			}
 		}
-			execute_push_swap(array);
+			execute_push_swap(++argv);
 	}
 	else if (argc == 2)
 	{

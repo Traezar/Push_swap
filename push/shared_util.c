@@ -46,12 +46,12 @@ t_node *extract_out_of_stack(t_node **head_of_stack,int node_with_this_value)
 	node_to_extract = NULL;
 	stack = *head_of_stack;
 	node_before_the_extracted = *head_of_stack;
-	while ((stack->num != node_with_this_value) && (stack->next != NULL))
+	while ((stack->value != node_with_this_value) && (stack->next != NULL))
 	{
 		node_before_the_extracted = stack;
 		stack = stack->next;
 	}
-	if(stack->num == node_to_extract->num)
+	if(stack->value == node_to_extract->value)
 	{
 		node_to_extract = stack;
 		node_before_the_extracted = stack->next;
@@ -74,7 +74,7 @@ void initialise_stack_a(t_node **head_of_a, char **int_array)
 	while(int_array[++i] != '\0')
 	{
 		new_stack_node = malloc(sizeof(t_node));
-		new_stack_node->num = ft_atoi(int_array[i]);
+		new_stack_node->value = ft_atoi(int_array[i]);
 		new_stack_node->next = head_of_stack;
 		head_of_stack = new_stack_node;
 	}
