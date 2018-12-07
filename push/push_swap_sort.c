@@ -3,52 +3,51 @@
 
 t_node *create_stack_array (char **ptr,int size)
 {
+
   t_node *stack;
+  t_node *ptr_ref;
   int  i;
 
   i = 0;
-  i = size;
-  stack = malloc(sizeof(t_node) * size);
 	while (i <= size)
   {
-    stack[i].value = ft_atoi(ptr[i]);
-    stack[i].distance_to_top = i;
-    stack[i].distance_to_bottom = size - i;
-    stack[i].rank = 0;
+    stack = malloc(sizeof(t_node));
+    stack->value = ft_atoi(ptr[i]);
+    stack->distance_to_top = i;
+    stack->distance_to_bottom = size - i;
+    stack->rank = 0;
+    stack->next= NULL;
+    push_back_node(&ptr_ref, &stack);
   }
-  return (stack);
+  return (ptr_ref);
 }
 
 int get_largest_value(t_array *array)
 {
-  int i;
-  t_node *ptr;
+  t_node *stack;
 
-  i = 0;
-  ptr =
-  array->largest_value = 0;
-  while (i < array.size)
+  stack = array->stack;
+  array->largest_value = stack->value;
+  while (stack != NULL)
   {
-    if(array[i].value >= array->largest_value)
-       array->largest_value == array[i].value;
-    i++;
+    if(stack->value >= array->largest_value)
+       array->largest_value = stack->value;
+    stack = stack->next;
   }
   return (array->largest_value);
 }
 
 int get_smallest_value(t_array *array)
 {
-  int i;
-  t_node *ptr;
+  t_node *stack;
 
-  i = 0;
-  ptr =
-  array->smallest_value = array->largest_value;
-  while (i < array.size)
+  stack=array->stack;
+  array->smallest_value = stack->value;
+  while (stack != NULL)
   {
-    if(array[i].value >= array->largest_value)
-       array->smallest_value == array[i].value;
-    i++;
+    if(stack->value >= array->largest_value)
+       array->smallest_value = stack->value;
+    stack = stack->next;
   }
   return (array->smallest_value);
 }
@@ -56,17 +55,20 @@ int get_smallest_value(t_array *array)
 void assign_rank_to_stack_elements (t_node *ranker, t_array **array)
 {
   int i;
-  t_array *ptr;
+  t_node  *stack;
 
-  i = 0;
+  i = 1;
   while (ranker != NULL)
   {
-    ptr = array;
-    while(ptr->stack[i].value != ranker.num) && (ptr->stack[i] <= ptr->size))
+    stack = (*array)->stack;
+    while(stack != NULL)
     {
-      if (ranker->num == ptr->stack[i].value)
-      ptr->stack.rank = ranker->rank;
-      i++;
+      if (ranker->value == stack->value)
+      {
+        stack->rank = ranker->rank;
+        break ;
+      }
+      stack = stack->next;
     }
     ranker = ranker->next;
   }
@@ -77,20 +79,25 @@ void sort_with_commands(t_array **array)
 {
   t_node *stack_a;
   t_node *stack_b;
-  t_op_list op;
+  t_oplist *op;
   int middle;
 
-  stack_a = array->stack;
-  stack_b = NULL;
-  middle = (rank / 2);
-  if (array->size > 20)
+  stack_a = (*array)->stack;
+  stack_b = (*array)->stack;
+  middle = ((*array)->size / 2);
+  if ((*array)->size > 20)
   {
-    while(!sorted(stack_a, stack_b array->size) && (stack_b != NULL))
+    while(!(sorted(stack_a, stack_b, (*array)->size)))
     {
       while (there_are_numbers_bigger_than_the_middle(stack_a, middle))
-        move_them_over_to_stack_b(&stack_a, &stack_b, middle, op);
-      sort_both_stacks(&stack_a, &stack_b, middle, op);
-      unload_stack_b(&stack_a, &stack_b, middle, op);
+        move_them_over_to_stack_b(&stack_a, &stack_b, middle, &op);
     }
+    sort_both_stacks(&stack_a, &stack_b, middle, &op);
+    //unload_stack_b(&stack_a, &stack_b, middle, op)
+    ft_printf("sorting done");
   }
+  else
+  sort_small(&stack_a, &stack_b, middle, &op);
+  ft_printf("sorting done");
+  return ;
 }

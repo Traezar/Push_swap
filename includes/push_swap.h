@@ -47,6 +47,7 @@ void push_back_node(t_node **head_of_stack,t_node **ptr_to_node);
 t_node *extract_out_of_stack(t_node **head_of_stack,int node_with_this_value);
 void initialise_stack_a(t_node **head_of_a,char **int_array);
 void reverse_stack_order(t_node **head_of_stack);
+void move_them_over_to_stack_b(t_node ** stack_a, t_node **stack_b, int middle, t_oplist **op);
 int there_are_numbers_bigger_than_the_middle(t_node *stack_a, int middle);
 void best_move (t_node **stack_a, t_node **stack_b, t_node *target, t_oplist **op);
 int find_next_to_push (t_node **a,t_node **target,int middle);
