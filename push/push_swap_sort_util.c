@@ -92,7 +92,7 @@ void rotate_stackb(int rotate, t_node ** stack, t_oplist **op)
     rb(stack, op);
 }
 
-void sort_both_stacks(t_node **stack_a, t_node **stack_b, int  middle, t_oplist **op)
+void sort_both_stacks(t_node **stack_a, t_node **stack_b, t_oplist **op)
 {
   t_oplist *op_a;
   t_oplist *op_b;
@@ -101,8 +101,7 @@ void sort_both_stacks(t_node **stack_a, t_node **stack_b, int  middle, t_oplist 
 
   a = *stack_a;
   b = *stack_b;
-  middle = 0;
-  while ((a->rank > (a->next)->rank) && (b->rank < (b->next)->rank))
+  while (not_sorted(&a, &b))
   {
     if ((a->rank > (a->next)->rank))
     sa(&a, &op_a);

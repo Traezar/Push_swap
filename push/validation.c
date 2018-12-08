@@ -13,12 +13,12 @@
 #include "../includes/push_swap.h"
 #include "../libft/includes/libft.h"
 
-#define allcon(x, y, size) ((con1 && con2) || con3)
-#define con1(x, y) (x >= y)
-#define con2(x, y) (x == y - 1)
-#define con3(x, y, size) (x == size && (y == 1)
+#define ALLCON {x, y, size} ((con1 && con2) || con3);
+#define CON1 {x, y} (x >= y);
+#define CON2 {x, y} (x != y - 1);
+#define CON3 {x, y, size} (x == size && (y == 1));
 
-int not_sorted(t_node **stack_a, t_node **stack_b, int size)
+int not_sorted(t_node **stack_a, t_node **stack_b)
 {
   t_node *a;
   t_node *b;
@@ -43,27 +43,24 @@ void sort_small(t_node **stack_a, int size)
   t_node *a;
   t_node *ref;
 
-  t_node *op;
+  t_oplist *op;
 
   a = *stack_a;
   ref = a;
-  if (not_sorted (a, b, size))
+  if (not_sorted (&a, NULL))
   {
   if (size == 2)
-    sa(stack_a, op);
-  else if ( size >= 3 && size <= 5)
+    sa(&a, &op);
+  else if ( size >= 3)
   {
-    while(not_sorted(a, b , size))
-    while (allcon(a->rank, (a->next)->rank, size) && a->next != NULL)
+    while(not_sorted(&a, NULL))
     {
-      rotate_best();
-      while(not_sorted)
-
-
-
-
-      a = *stack_a;
+      if (ALLCON (a->rank, (a->next)->rank, size))
+      rotate_stacka(&a, &op);
+      else
+      sa(&a, &op);
     }
-
   }
+ *stack_a = a;
+}
 }

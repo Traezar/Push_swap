@@ -87,17 +87,17 @@ void sort_with_commands(t_array **array)
   middle = ((*array)->size / 2);
   if ((*array)->size > 20)
   {
-    while(!(sorted(stack_a, stack_b, (*array)->size)))
+    while(not_sorted(&stack_a, &stack_b))
     {
       while (there_are_numbers_bigger_than_the_middle(stack_a, middle))
-        move_them_over_to_stack_b(&stack_a, &stack_b, middle, &op);
+        move_them_over_to_stack_b(&stack_a, &stack_b, (*array)->size, &op);
     }
-    sort_both_stacks(&stack_a, &stack_b, middle, &op);
+    sort_both_stacks(&stack_a, &stack_b, &op);
     //unload_stack_b(&stack_a, &stack_b, middle, op)
     ft_printf("sorting done");
   }
   else
-  sort_small(&stack_a, &stack_b, middle, &op);
+  sort_small(&stack_a, (*array)->size);
   ft_printf("sorting done");
   return ;
 }

@@ -52,7 +52,7 @@ int there_are_numbers_bigger_than_the_middle(t_node *stack_a, int middle);
 void best_move (t_node **stack_a, t_node **stack_b, t_node *target, t_oplist **op);
 int find_next_to_push (t_node **a,t_node **target,int middle);
 void rotate(int rotate, t_node ** stack, t_oplist **op);
-void sort_both_stacks(t_node **stack_a, t_node **stack_b, int  middle, t_oplist **op);
+void sort_both_stacks(t_node **stack_a, t_node **stack_b, t_oplist **op);
 t_array *get_params(char **int_array);
 void execute_push_swap (char **int_array);
 void rotate_stacka(int rotate, t_node ** stack, t_oplist **op);
@@ -73,3 +73,5 @@ void rrb(t_node **head_of_b, t_oplist **op);
 void rrr(t_node **head_of_a, t_node **head_of_b, t_oplist **op_a , t_oplist **op_b);
 
 void print_to_oplist(char *str, t_oplist **head);
+int not_sorted(t_node **stack_a, t_node **stack_b);
+void sort_small(t_node **stack_a, int size);
