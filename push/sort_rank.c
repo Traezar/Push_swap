@@ -2,7 +2,7 @@
 #include "../includes/push_swap.h"
 #include "../libft/includes/libft.h"
 
-void front_back_split(t_node **head_of_a, t_node *front, t_node *back)
+void front_back_split(t_node **head_of_a, t_node **front, t_node **back)
 {
   t_node *fast;
   t_node *slow;
@@ -19,8 +19,8 @@ void front_back_split(t_node **head_of_a, t_node *front, t_node *back)
       fast = fast->next;
     }
   }
-  front = *head_of_a;
-  back = slow->next;
+  *front = *head_of_a;
+  *back = slow->next;
   slow->next = NULL;
 }
 
@@ -56,7 +56,7 @@ void sort(t_node **head_of_a)
     return ;
   if ((*head_of_a)->next == NULL)
     return ;
-  front_back_split(head_of_a, front, back);
+  front_back_split(head_of_a, &front, &back);
   sort(&front);
   sort(&back);
   *head_of_a = merge(front,back);

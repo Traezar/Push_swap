@@ -8,13 +8,14 @@ t_node *create_stack_array (char **ptr,int size)
   t_node *ptr_ref;
   int  i;
 
-  i = 0;
-	while (i <= size)
+  i = -1;
+  ptr_ref = NULL;
+	while (ptr[++i] != '\0')
   {
     stack = malloc(sizeof(t_node));
     stack->value = ft_atoi(ptr[i]);
     stack->distance_to_top = i;
-    stack->distance_to_bottom = size - i;
+    stack->distance_to_bottom = size - (i + 1);
     stack->rank = 0;
     stack->next= NULL;
     push_back_node(&ptr_ref, &stack);
@@ -83,7 +84,7 @@ void sort_with_commands(t_array **array)
   int middle;
 
   stack_a = (*array)->stack;
-  stack_b = (*array)->stack;
+  stack_b = NULL;
   middle = ((*array)->size / 2);
   if ((*array)->size > 20)
   {

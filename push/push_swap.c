@@ -24,7 +24,7 @@ t_array *get_params(char **int_array)
 	array = malloc(sizeof(t_array));
 	while (ptr[i] != '\0')
 		i++;
-	array->size = ++i;
+	array->size = i;
 	array->stack =  create_stack_array(int_array, array->size);
 	array->largest_value = get_largest_value(array);
 	array->smallest_value = get_smallest_value(array);
@@ -52,7 +52,7 @@ int main (int argc, char ** argv)
 	int i;
 	char **array;
 
-	i = 0;
+	i = 1;
 	if (argc > 2)
 	{
 		while(argv[i] != NULL)

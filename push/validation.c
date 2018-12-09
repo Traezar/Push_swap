@@ -31,7 +31,7 @@ int not_sorted(t_node **stack_a, t_node **stack_b)
   if(b != NULL)
     return 1;
   else
-    while ( a != NULL)
+    while ( a->next != NULL)
     {
       if (a->rank <= (a->next)->rank)
         a = a->next;
@@ -44,26 +44,31 @@ int not_sorted(t_node **stack_a, t_node **stack_b)
 void sort_small(t_node **stack_a, int size)
 {
   t_node *a;
+  t_node *b;
   t_node *ref;
 
   t_oplist *op;
 
   a = *stack_a;
+  b = NULL;
   ref = a;
-  if (not_sorted (&a, NULL))
+  if (not_sorted (&a, &b))
   {
-  if (size == 2)
-    sa(&a, &op);
-  else if ( size >= 3)
-  {
-    while(not_sorted (&a, NULL))
-    {
-      if (rotate_or_swap(a->rank, (a->next)->rank, size))
-      rotate_stacka(1,&a, &op);
-      else
-      sa(&a, &op);
-    }
+      if (size == 2)
+        sa(&a, &op);
+      else if ( size >= 3)
+      {
+        while(not_sorted (&a, &b))
+        {
+          if (rotate_or_swap(a->rank, (a->next)->rank, size))
+          rotate_stacka(1,&a, &op);
+          else
+          sa(&a, &op);
+        }
+      }
+      *stack_a = a;
   }
- *stack_a = a;
-}
+  else
+    ft_printf("List is already sorted !!!!: O.K");
+  return ;
 }

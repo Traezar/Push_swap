@@ -31,8 +31,13 @@ void push_back_node(t_node **head_of_stack,t_node **ptr_to_node)
 
 	node = *ptr_to_node;
 	stack = *head_of_stack;
+	if (stack == NULL)
+	{
+		*head_of_stack = node;
+		return ;
+	}
 	while (stack->next != NULL)
-		stack = stack->next;
+	stack = stack->next;
 	stack->next = node;
 	node->next = NULL;
 }
