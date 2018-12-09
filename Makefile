@@ -6,7 +6,7 @@
 #    By: rsathiad <3kiraj@gmail.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/09 08:38:15 by rsathiad          #+#    #+#              #
-#    Updated: 2018/12/03 12:00:03 by rsathiad         ###   ########.fr        #
+#    Updated: 2018/12/08 16:39:54 by rsathiad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,11 @@ checkerHDR = includes/checker.h
 all: LIBFT checker push_swap
 
 checker:
-	@gcc -o checker $(CFLAGS) $(checkerSRC) -I $(checkerHDR) -L libft -lft
+	@gcc -o checker $(CFLAGS) $(checkerSRC) -I $(checkerHDR) -L libft -lft -g
 	@echo "\033[1;32m[Compiled]\033[0m: \033[1;33m./checker\033[0m"
 
 push_swap:
-	@gcc -o push_swap $(CFLAGS) $(pushSRC) -I $(pushHDR) -L libft -lft
+	@gcc -o push_swap $(CFLAGS) $(pushSRC) -I $(pushHDR) -L libft -lft -g
 	@echo "\033[1;32m[Compiled]\033[0m: \033[1;36m./pushswap\033[0m"
 
 LIBFT :

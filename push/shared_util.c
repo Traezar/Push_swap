@@ -24,7 +24,7 @@ void push_front_node(t_node **head_of_stack,t_node **ptr_to_node)
 	*head_of_stack = node;
 }
 
-void push_back_stack(t_node **head_of_stack,t_node **ptr_to_node)
+void push_back_node(t_node **head_of_stack,t_node **ptr_to_node)
 {
 	t_node *stack;
 	t_node *node;

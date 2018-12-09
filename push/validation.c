@@ -13,10 +13,13 @@
 #include "../includes/push_swap.h"
 #include "../libft/includes/libft.h"
 
-#define ALLCON {x, y, size} ((con1 && con2) || con3);
-#define CON1 {x, y} (x >= y);
-#define CON2 {x, y} (x != y - 1);
-#define CON3 {x, y, size} (x == size && (y == 1));
+int rotate_or_swap(int rank, int next_rank, int  size)
+{
+  if (((rank >= next_rank) && (rank != next_rank - 1)) ||
+    (rank == size && (next_rank == 1)))
+    return (0);
+  return (1);
+}
 
 int not_sorted(t_node **stack_a, t_node **stack_b)
 {
@@ -53,10 +56,10 @@ void sort_small(t_node **stack_a, int size)
     sa(&a, &op);
   else if ( size >= 3)
   {
-    while(not_sorted(&a, NULL))
+    while(not_sorted (&a, NULL))
     {
-      if (ALLCON (a->rank, (a->next)->rank, size))
-      rotate_stacka(&a, &op);
+      if (rotate_or_swap(a->rank, (a->next)->rank, size))
+      rotate_stacka(1,&a, &op);
       else
       sa(&a, &op);
     }
