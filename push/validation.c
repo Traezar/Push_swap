@@ -41,13 +41,11 @@ int not_sorted(t_node **stack_a, t_node **stack_b)
   return 0;
 }
 
-void sort_small(t_node **stack_a, int size)
+void sort_small(t_node **stack_a, int size, t_oplist **op)
 {
   t_node *a;
   t_node *b;
   t_node *ref;
-
-  t_oplist *op;
 
   a = *stack_a;
   b = NULL;
@@ -55,15 +53,15 @@ void sort_small(t_node **stack_a, int size)
   if (not_sorted (&a, &b))
   {
       if (size == 2)
-        sa(&a, &op);
+        sa(&a, op);
       else if ( size >= 3)
       {
         while(not_sorted (&a, &b))
         {
           if (rotate_or_swap(a->rank, (a->next)->rank, size))
-          rotate_stacka(1,&a, &op);
+          rotate_stacka(-1,&a, op);
           else
-          sa(&a, &op);
+          sa(&a, op);
         }
       }
       *stack_a = a;

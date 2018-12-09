@@ -19,8 +19,8 @@ void sa(t_node **head_of_a,  t_oplist **op)
   t_node *second;
 
   first = *head_of_a;
-  second = (*head_of_a)->next;
-  first = second->next;
+  second = first->next;
+  first->next = second->next;
   second->next = first;
   *head_of_a = second;
   print_to_oplist("sa",op);
@@ -33,8 +33,8 @@ void sb(t_node **head_of_b, t_oplist **op)
   t_node *second;
 
   first = *head_of_b;
-  second = (*head_of_b)->next;
-  first = second->next;
+  second = first->next;
+  first->next = second->next;
   second->next = first;
   *head_of_b = second;
   print_to_oplist("sb",op);

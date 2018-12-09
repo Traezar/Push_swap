@@ -86,6 +86,7 @@ void sort_with_commands(t_array **array)
   stack_a = (*array)->stack;
   stack_b = NULL;
   middle = ((*array)->size / 2);
+  op = NULL;
   if ((*array)->size > 20)
   {
     while(not_sorted(&stack_a, &stack_b))
@@ -95,10 +96,14 @@ void sort_with_commands(t_array **array)
     }
     sort_both_stacks(&stack_a, &stack_b, &op);
     //unload_stack_b(&stack_a, &stack_b, middle, op)
-    ft_printf("sorting done");
   }
   else
-  sort_small(&stack_a, (*array)->size);
+  sort_small(&stack_a, (*array)->size, &op);
+  while(op != NULL)
+  {
+    ft_printf("%s\n", op->op);
+    op = op->next;
+  }
   ft_printf("sorting done");
   return ;
 }

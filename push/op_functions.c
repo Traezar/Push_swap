@@ -20,9 +20,12 @@ void print_to_oplist(char *str, t_oplist **head)
 
   new = malloc(sizeof(t_oplist));
   list = *head;
-  while (list->next != NULL)
+  if (list != NULL)
+  {
+    while (list->next != NULL)
     list = list->next;
-  list->next = new;
+    list->next = new;
+  }
   new->op = ft_strdup(str);
   new->next = NULL;
 }

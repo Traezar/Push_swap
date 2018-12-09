@@ -31,7 +31,7 @@ t_array *get_params(char **int_array)
 	return (array);
 }
 
-void execute_push_swap (char ** int_array)
+void execute_push_swap(char ** int_array)
 {
 	t_node *ranker;
 	t_array *array;
@@ -47,7 +47,7 @@ void execute_push_swap (char ** int_array)
 	return ;
 }
 
-int main (int argc, char ** argv)
+int main(int argc, char ** argv)
 {
 	int i;
 	char **array;
