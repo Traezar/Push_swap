@@ -76,3 +76,8 @@ int rotate_or_swap(int rank, int next_rank, int  size);
 void print_to_oplist(char *str, t_oplist **head);
 int not_sorted(t_node **stack_a, t_node **stack_b);
 void sort_small(t_node **stack_a, int size, t_oplist **op);
+
+
+
+
+void debug_print_state(t_node **headlist, t_oplist **oplist);

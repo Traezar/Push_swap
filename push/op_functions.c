@@ -17,15 +17,26 @@ void print_to_oplist(char *str, t_oplist **head)
 {
   t_oplist *new;
   t_oplist *list;
+  t_oplist *ref;
 
   new = malloc(sizeof(t_oplist));
   list = *head;
-  if (list != NULL)
+  ref = list;
+  if (list == NULL)
+  {
+    new->op = ft_strdup(str);
+    new->next = NULL;
+    *head = new;
+    return;
+  }
+  else
   {
     while (list->next != NULL)
-    list = list->next;
+      list = list->next;
     list->next = new;
+    new->op = ft_strdup(str);
+    new->next = NULL;
+    *head = ref;
   }
-  new->op = ft_strdup(str);
-  new->next = NULL;
+  return;
 }

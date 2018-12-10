@@ -15,8 +15,9 @@
 
 int rotate_or_swap(int rank, int next_rank, int  size)
 {
-  if (((rank >= next_rank) && (rank != next_rank - 1)) ||
-    (rank == size && (next_rank == 1)))
+  if ((rank < next_rank) && (rank - 1 != next_rank)
+  && (rank != next_rank - 1)
+  && (rank != size && (next_rank != 1)))
     return (0);
   return (1);
 }
@@ -54,7 +55,7 @@ void sort_small(t_node **stack_a, int size, t_oplist **op)
   {
       if (size == 2)
         sa(&a, op);
-      else if ( size >= 3)
+      else if (size >= 3)
       {
         while(not_sorted (&a, &b))
         {
@@ -62,6 +63,9 @@ void sort_small(t_node **stack_a, int size, t_oplist **op)
           rotate_stacka(-1,&a, op);
           else
           sa(&a, op);
+          //debug
+          debug_print_state(&a, op);
+          //debug
         }
       }
       *stack_a = a;
