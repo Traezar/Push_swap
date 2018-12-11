@@ -2,3 +2,5 @@ push_swap
 checker
 *.dSYM
 */*.a
+libft/libft_object_files/*
+

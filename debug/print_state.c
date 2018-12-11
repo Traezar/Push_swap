@@ -6,8 +6,10 @@ void debug_print_state(t_node **headlist, t_oplist **oplist)
   t_node *a;
   t_oplist *op;
   char *placeholder;
+  int i;
 
 
+  i = 0;
   a = *headlist;
   op = *oplist;
   placeholder = ft_strnew(100);
@@ -23,11 +25,13 @@ void debug_print_state(t_node **headlist, t_oplist **oplist)
   {
     ft_printf("%s ",op->op);
     op = op->next;
+    i++;
   }
   ft_putchar('\n');
-  get_next_line(1, &placeholder);
+  //get_next_line(1, &placeholder);
   if (ft_strcmp(placeholder, "q") == 0)
     exit(0);
   free(placeholder);
+  ft_printf("The number of commands generated is : %i\n", i);
   return ;
 }
