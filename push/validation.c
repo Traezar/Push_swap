@@ -13,11 +13,20 @@
 #include "../includes/push_swap.h"
 #include "../libft/includes/libft.h"
 
-int rotate_or_swap(int rank, int next_rank, int  size)
+int rotate_or_swap_ascending(int rank, int next_rank, int  size)
 {
   if ((rank < next_rank) && (rank - 1 != next_rank)
   && (rank != next_rank - 1)
   && (rank != size && (next_rank != 1)))
+    return (0);
+  return (1);
+}
+
+int rotate_or_swap_descending(int rank, int next_rank, int  size)
+{
+  if ((rank > next_rank) && (rank + 1 != next_rank)
+  && (rank != next_rank + 1)
+  && (rank != 1 && (next_rank != size)))
     return (0);
   return (1);
 }
@@ -47,6 +56,7 @@ void sort_small(t_node **stack_a, int size, t_oplist **op)
   t_node *a;
   t_node *b;
   t_node *ref;
+  int rotate;
 
   a = *stack_a;
   b = NULL;
@@ -59,8 +69,12 @@ void sort_small(t_node **stack_a, int size, t_oplist **op)
       {
         while(not_sorted (&a, &b))
         {
-          if (rotate_or_swap(a->rank, (a->next)->rank, size))
-          rotate_stacka(-1,&a, op);
+          if (rotate_or_swap_ascending(a->rank, (a->next)->rank, size))
+          {
+            ft_printf("the current length of the chain after get direction is : %d\n", get_chain_size(a));
+            rotate = get_direction(&a);
+            rotate_stacka(rotate ,&a, op);
+          }
           else
           sa(&a, op);
           //debug

@@ -22,7 +22,12 @@ void sa(t_node **head_of_a,  t_oplist **op)
   second = first->next;
   first->next = second->next;
   second->next = first;
+  second->distance_to_bottom++;
+  second->distance_to_top--;
+  first->distance_to_bottom--;
+  first->distance_to_top++;
   *head_of_a = second;
+
   print_to_oplist("sa",op);
   return ;
 }
@@ -37,6 +42,10 @@ void sb(t_node **head_of_b, t_oplist **op)
   first->next = second->next;
   second->next = first;
   *head_of_b = second;
+  second->distance_to_bottom++;
+  second->distance_to_top--;
+  first->distance_to_bottom--;
+  first->distance_to_top++;
   print_to_oplist("sb",op);
   return ;
 }

@@ -72,10 +72,15 @@ void rra(t_node **head_of_a, t_oplist **op);
 void rrb(t_node **head_of_b, t_oplist **op);
 void rrr(t_node **head_of_a, t_node **head_of_b, t_oplist **op_a , t_oplist **op_b);
 
-int rotate_or_swap(int rank, int next_rank, int  size);
+int rotate_or_swap_ascending(int rank, int next_rank, int  size);
+int rotate_or_swap_descending(int rank, int next_rank, int  size);
 void print_to_oplist(char *str, t_oplist **head);
 int not_sorted(t_node **stack_a, t_node **stack_b);
 void sort_small(t_node **stack_a, int size, t_oplist **op);
+int  rotations_to_a_swap_ascending(t_node *node,int count);
+int  rotations_to_a_swap_descending(t_node *node,int count);
+int get_direction(t_node **node);
+int get_chain_size(t_node *a);
 
 
 

@@ -88,15 +88,7 @@ void sort_with_commands(t_array **array)
   middle = ((*array)->size / 2);
   op = NULL;
   if ((*array)->size > 20)
-  {
-    while(not_sorted(&stack_a, &stack_b))
-    {
-      while (there_are_numbers_bigger_than_the_middle(stack_a, middle))
-        move_them_over_to_stack_b(&stack_a, &stack_b, (*array)->size, &op);
-    }
-    sort_both_stacks(&stack_a, &stack_b, &op);
-    //unload_stack_b(&stack_a, &stack_b, middle, op)
-  }
+      sort_big(&stack_a, &stack_b, &op, (*array)->largest_value);
   else
   sort_small(&stack_a, (*array)->size, &op);
   while(op != NULL)

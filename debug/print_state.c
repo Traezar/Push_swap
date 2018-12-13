@@ -28,7 +28,7 @@ void debug_print_state(t_node **headlist, t_oplist **oplist)
     i++;
   }
   ft_putchar('\n');
-  //get_next_line(1, &placeholder);
+  get_next_line(1, &placeholder);
   if (ft_strcmp(placeholder, "q") == 0)
     exit(0);
   free(placeholder);
