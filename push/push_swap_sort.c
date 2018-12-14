@@ -87,10 +87,9 @@ void sort_with_commands(t_array **array)
   stack_b = NULL;
   middle = ((*array)->size / 2);
   op = NULL;
-  if ((*array)->size > 20)
-      sort_big(&stack_a, &stack_b, &op, (*array)->largest_value);
-  else
-  sort_small(&stack_a, (*array)->size, &op);
+  sort_big(&stack_a, &stack_b, &op, (*array)->size);
+  //else
+//  sort_small(&stack_a, (*array)->size, &op);
   while(op != NULL)
   {
     ft_printf("%s\n", op->op);

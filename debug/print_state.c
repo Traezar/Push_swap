@@ -1,25 +1,37 @@
 #include "../includes/push_swap.h"
 #include "../libft/includes/libft.h"
 
-void debug_print_state(t_node **headlist, t_oplist **oplist)
+void debug_print_state(t_node **alist, t_node **blist, t_oplist **oplist)
 {
   t_node *a;
+  t_node *b;
   t_oplist *op;
   char *placeholder;
   int i;
 
 
   i = 0;
-  a = *headlist;
+  a = *alist;
+  b = *blist;
   op = *oplist;
   placeholder = ft_strnew(100);
   ft_printf("The current state is :\n");
+  ft_printf("A | ");
   while (a != NULL)
   {
 
-    ft_printf("%20d\n",a->value);
+    ft_printf("%d ",a->value);
     a = a->next;
   }
+  ft_printf("\n");
+  ft_printf("B | ");
+  while (b != NULL)
+  {
+
+    ft_printf("%d ",b->value);
+    b = b->next;
+  }
+  ft_printf("\n");
   ft_printf("The commands that have been is are :");
   while (op != NULL)
   {

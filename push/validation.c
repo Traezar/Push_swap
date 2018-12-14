@@ -78,7 +78,7 @@ void sort_small(t_node **stack_a, int size, t_oplist **op)
           else
           sa(&a, op);
           //debug
-          debug_print_state(&a, op);
+          debug_print_state(&a, &b, op);
           //debug
         }
       }

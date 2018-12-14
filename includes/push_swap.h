@@ -40,6 +40,10 @@ int get_largest_value(t_array *array);
 int get_smallest_value(t_array *array);
 void sort_with_commands(t_array **array);
 void assign_rank_to_stack_elements (t_node *ranker, t_array **array);
+void sort_inplace(t_node **stack_a, t_node **stack_b, t_oplist **op);
+void sort_insert(t_node **stack_a, t_node **stack_b, t_oplist **op);
+void sort_big(t_node **head_of_a, t_node **head_of_b, t_oplist **op,int max);
+void align_stacks(t_node **stack_a, t_node **stack_b, t_oplist **op, int mid);
 void sort_with_commands(t_array **array);
 
 void push_front_node(t_node **head_of_stack,t_node **ptr_to_node);
@@ -85,4 +89,4 @@ int get_chain_size(t_node *a);
 
 
 
-void debug_print_state(t_node **headlist, t_oplist **oplist);
+void debug_print_state(t_node **headlist, t_node **blist, t_oplist **oplist);

@@ -31,12 +31,10 @@ void print_to_oplist(char *str, t_oplist **head)
   }
   else
   {
-    while (list->next != NULL)
-      list = list->next;
+    new->next = list;
     list->next = new;
     new->op = ft_strdup(str);
-    new->next = NULL;
-    *head = ref;
+    *head = new;
   }
   return;
 }

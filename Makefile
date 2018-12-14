@@ -18,7 +18,7 @@ checkerSRC = check/check_util.c check/checker.c check/stack_util.c \
 pushSRC = push/push_swap_sort_util.c push/push_swap_sort.c \
 		  push/push_swap.c push/shared_util.c push/sort_rank.c \
 			push/command_list_one.c push/op_functions.c \
-			push/validation.c debug/print_state.c push/rotation.c
+			push/validation.c debug/print_state.c push/rotation.c push/big_sort.c
 
 pushHDR = includes/push_swap.h
 
