@@ -85,6 +85,7 @@ int  rotations_to_a_swap_ascending(t_node *node,int count);
 int  rotations_to_a_swap_descending(t_node *node,int count);
 int get_direction(t_node **node);
 int get_chain_size(t_node *a);
+int get_tranches(int max);
 
 
 

@@ -90,11 +90,7 @@ void sort_with_commands(t_array **array)
   sort_big(&stack_a, &stack_b, &op, (*array)->size);
   //else
 //  sort_small(&stack_a, (*array)->size, &op);
-  while(op != NULL)
-  {
-    ft_printf("%s\n", op->op);
-    op = op->next;
-  }
+  debug_print_state(&stack_a, &stack_b, &op);
   ft_printf("sorting done");
   return ;
 }
