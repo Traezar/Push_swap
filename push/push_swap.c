@@ -53,21 +53,7 @@ int main(int argc, char ** argv)
 	char **array;
 
 	i = 1;
-	if (argc > 2)
-	{
-		while(argv[i] != NULL)
-		{
-			if (ft_isinteger(argv[i]))
-				i++;
-			else
-			{
-				ft_printf("This argument is invalid : %s", argv[i]);
-				exit(0);
-			}
-		}
-			execute_push_swap(++argv);
-	}
-	else if (argc == 2)
+ 	if (argc == 2)
 	{
 		array = ft_strsplit(argv[1],' ');
 		execute_push_swap(array);

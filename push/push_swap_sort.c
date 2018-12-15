@@ -88,8 +88,6 @@ void sort_with_commands(t_array **array)
   middle = ((*array)->size / 2);
   op = NULL;
   sort_big(&stack_a, &stack_b, &op, (*array)->size);
-  //else
-//  sort_small(&stack_a, (*array)->size, &op);
   debug_print_state(&stack_a, &stack_b, &op);
   ft_printf("sorting done");
   return ;
