@@ -56,7 +56,7 @@ int get_direction(t_node **head)
   ft_printf("the current length of the chain before 1st rotation is : %d\n", get_chain_size(node));
   count = rotations_to_a_swap_ascending(node, 0);
   ft_printf("the count is : %d\n", count);
-ft_printf("the current length of the chain after 1st rotation is : %d\n", get_chain_size(node));
+  ft_printf("the current length of the chain after 1st rotation is : %d\n", get_chain_size(node));
   reverse_stack_order(&node);
   ft_printf("the current length of the chain after in get direction after first reversal is : %d\n", get_chain_size(node));
   ft_printf("the current length of the chain before 2nd rotation is : %d\n", get_chain_size(node));

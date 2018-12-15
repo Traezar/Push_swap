@@ -45,23 +45,3 @@ int get_tranches(int max)
    }
    return (i);
 }
-
-int find_best_move(t_node **stack_a, int target)
-{
-  int db;
-  int dt;
-  t_node *a;
-
-  a =  *stack_a;
-  dt = 0;
-  db = get_chain_size(a);
-  while (a->next != NULL && a->rank != target)
-  {
-    dt++;
-    db--;
-    a = a->next;
-  }
-  if (db < dt)
-    return (-1);
-  return (1);
-}
