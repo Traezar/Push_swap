@@ -27,6 +27,7 @@ typedef struct s_node
 	struct s_node *next;
 } t_node;
 
+//typedef struct s_locate{}
 typedef struct s_oplist
 {
 	char *op;
@@ -35,7 +36,8 @@ typedef struct s_oplist
 
 /*big_sort*/
 void sort_big(t_node **head_of_a, t_node **head_of_b, t_oplist **op,int max);
-int get_tranches(int max);
+void recur_a(t_node **head_of_a, t_node **head_of_b, t_oplist **op_list,int middle);
+void recur_b(t_node **head_of_a, t_node **head_of_b, t_oplist **op_list,int middle);
 /*command_list_one*/
 void sa(t_node **head_of_a, t_oplist **op);
 void sb( t_node **head_of_b, t_oplist **op);
