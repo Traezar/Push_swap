@@ -78,17 +78,17 @@ void assign_rank_to_stack_elements (t_node *ranker, t_array **array)
 
 void sort_with_commands(t_array **array)
 {
-  t_node *stack_a;
-  t_node *stack_b;
-  t_oplist *op;
-  int middle;
+  t_packet *s;
 
-  stack_a = (*array)->stack;
-  stack_b = NULL;
-  middle = ((*array)->size / 2);
-  op = NULL;
-  sort_big(&stack_a, &stack_b, &op, middle);
-  debug_print_state(&stack_a, &stack_b, &op);
+  s = malloc(sizeof(t_packet));
+  s->a = (*array)->stack;
+  s->b = NULL;
+  s->op = NULL;
+  if ((*array)->size == 3)
+    sort_3(s);
+  else
+  sort_big(&s->a, &s->b, &s->op, (*array)->size);
+  debug_print_state(&s->a, &s->b, &s->op);
   ft_printf("sorting done");
   return ;
 }

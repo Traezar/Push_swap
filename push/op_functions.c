@@ -23,3 +23,32 @@ void print_to_oplist(char *str, t_oplist **head)
   *head = new;
   return;
 }
+
+void sort_3(t_packet *s)
+{
+  int first;
+  int second;
+  int third;
+
+  first = s->a->rank;
+  second = s->a->next->rank;
+  third = (s->a->next)->next->rank;
+  if ((first < second)  && (second < third) && first < third) //123
+    return;
+  else if ((first > second) &&(first > third) && (second < third))//312
+    ra(&s->a, &s->op);
+  else if ((first < second) && (second > third) && (third > first))//132
+    {
+      rra(&s->a, &s->op);
+      sa(&s->a, &s->op);
+    }
+  else if ((first > second) && (second > third)&&(first > third))//321
+    {
+      sa(&s->a, &s->op);
+      rra(&s->a, &s->op);
+    }
+  else if ((first > second) && (second < third) && (third > first))//213
+    sa(&s->a, &s->op);
+  else if((first < second) && (second > third) && (third < first))//231
+    rra(&s->a, &s->op);
+}

@@ -44,6 +44,27 @@ void debug_print_state(t_node **alist, t_node **blist, t_oplist **oplist)
   if (ft_strcmp(placeholder, "q") == 0)
     exit(0);
   free(placeholder);
-  ft_printf("The number of commands generated is : %i\n", i);
   return ;
+}
+
+void reverse_oplist(t_oplist **head_of_stack)
+{
+	t_oplist *previous;
+	t_oplist *current;
+	t_oplist *next;
+
+	if (*head_of_stack == NULL)
+		return;
+	if ((*head_of_stack)->next == NULL)
+		return;
+	current = *head_of_stack;
+	previous = NULL;
+		while (current != NULL)
+     {
+         next  = current->next;
+         current->next = previous;
+         previous = current;
+         current = next;
+     }
+   *head_of_stack = previous;
 }

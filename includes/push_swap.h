@@ -34,6 +34,12 @@ typedef struct s_oplist
 	struct s_oplist *next;
 } t_oplist;
 
+typedef struct s_packet
+{
+  t_node *a;
+  t_node *b;
+  t_oplist *op;
+} t_packet;
 /*big_sort*/
 void sort_big(t_node **head_of_a, t_node **head_of_b, t_oplist **op,int max);
 void recur_a(t_node **head_of_a, t_node **head_of_b, t_oplist **op_list,int middle);
@@ -52,6 +58,7 @@ void rrb(t_node **head_of_b, t_oplist **op);
 void rrr(t_node **head_of_a, t_node **head_of_b, t_oplist **op_a , t_oplist **op_b);
 /*op_functions*/
 void print_to_oplist(char *str, t_oplist **head);
+void sort_3(t_packet *s);
 /*push_swap_sort_util*/
 /*push_swap_sort*/
 t_node *create_stack_array (char **ptr,int size);
@@ -86,3 +93,4 @@ int not_sorted(t_node **stack_a, t_node **stack_b);
 void sort_small(t_node **stack_a, int size, t_oplist **op);
 /*debug*/
 void debug_print_state(t_node **headlist, t_node **blist, t_oplist **oplist);
+void reverse_oplist(t_oplist **head_of_stack);
